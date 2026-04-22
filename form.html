@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>form</title>
+
+  <!-- jQuery Mobile CDN -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<div class="card" style="
+    background: linear-gradient(135deg, #56ab2f, #a8e063); 
+    padding: 30px; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+    margin-bottom: 20px;
+    text-align: center;
+">
+  <h3 style="color: #fff; text-align:center; margin-bottom: 20px;">📝 User Registration</h3>
+  
+  <form id="userForm" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+
+<!-- Nama -->
+    <div class="ui-field-contain" style="width: 100%; max-width: 300px;">
+      <label for="name" style="color:#fff;">Name:</label>
+      <input type="text" name="name" id="name" placeholder="Enter your name" required style="border-radius:12px; padding:10px; width:100%;">
+    </div>
+
+    <!-- ID -->
+    <div class="ui-field-contain" style="width: 100%; max-width: 300px;">
+      <label for="userid" style="color:#fff;">ID:</label>
+      <input type="text" name="userid" id="userid" placeholder="Enter your ID" required style="border-radius:12px; padding:10px; width:100%;">
+    </div>
+
+    <!-- Email -->
+    <div class="ui-field-contain" style="width: 100%; max-width: 300px;">
+      <label for="email" style="color:#fff;">Email:</label>
+      <input type="email" name="email" id="email" placeholder="Enter your email" required style="border-radius:12px; padding:10px; width:100%;">
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="ui-btn ui-btn-b ui-corner-all ui-shadow" style="background:#ff6f61; border:none; font-weight:bold; width:150px;">
+      🚀 Submit
+    </button>
+  </form>
+</div>
