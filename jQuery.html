@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery Mobile Button, Dialog & Transition</title>
+
+  <!-- jQuery Mobile CDN -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+  <!-- ✅ Home Page -->
+  <div data-role="page" id="home">
+    <div data-role="header">
+      <h1>Home Page</h1>
+    </div>
+
+<div class="card">
+      <h3>📞 Call </h3>
+      <a href="tel:+60133338221" class="ui-btn ui-icon-phone ui-btn-icon-left">
+        Call Me
+      </a>
+    </div>
+
+<div class="card">
+        <h3>🎥 Video</h3>
+        <video id="video" autoplay></video>
+        <button id="startVideo">Start</button>
+    </div>
+
+<div class="card">
+      <h3>✉️ Email & SMS</h3>
+      <a href="mailto:info@example.com?subject=Hello" 
+         class="ui-btn ui-icon-mail ui-btn-icon-left">
+        Send Email
+      </a>
+      <a href="sms:+60133338221?body=Hello!" 
+         class="ui-btn ui-icon-comment ui-btn-icon-left">
+        Send SMS
+      </a>
+    </div>
+
+<div class="card">
+      <h3>📍 GPS Location</h3>
+      <button onclick="getLocation()" 
+              class="ui-btn ui-icon-location ui-btn-icon-left">
+        Get My Location
+      </button>
+      <p id="locationResult"></p>
+    </div>
+
+<div class="card">
+      <h3>📷 Camera Access</h3>
+      <label for="cameraInput" class="ui-btn ui-icon-camera ui-btn-icon-left">
+        Open Camera
+      </label>
+      <input type="file" id="cameraInput" accept="image/*" capture="camera" style="display:none;">
+    </div>
+
+<div class="card">
+      <h3>🎤 Microphone Input</h3>
+      <label for="micInput" class="ui-btn ui-icon-audio ui-btn-icon-left">
+        Record Audio
+      </label>
+      <input type="file" id="micInput" accept="audio/*" capture style="display:none;">
+    </div>
+
+ <div data-role="footer">
+      <h4>© 2025 Web Development Class</h4>
+    </div>
+  </div>
+
+<script>
+$(document).ready(function(){
+
+    // VIDEO
+    $("#startVideo").click(function(){
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(function(stream){
+            document.getElementById("video").srcObject = stream;
+        });
+    });
+
+    // GPS + MAP
+    $("#getLocation").click(function(){
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function(position){
+
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                $("#map").attr("src",
+                    "https://maps.google.com/maps?q=" + lat + "," + lon + "&z=15&output=embed"
+                );
+
+            });
+        } else {
+            alert("GPS not supported");
+        }
+    });
+
+    // MIC
+    $("#micBtn").click(function(){
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(function(){
+            $("#micStatus").text("Mic Enabled ✅");
+        })
+        .catch(function(){
+            $("#micStatus").text("Mic Denied ❌");
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>
